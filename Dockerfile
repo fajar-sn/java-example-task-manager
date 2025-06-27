@@ -35,7 +35,7 @@ COPY --from=build /app/target/task-management-system-1.0.0.jar app.jar
 
 # Create directories and set permissions
 RUN mkdir -p /app/logs /app/data && \
-    chown R appuser:appgroup /app
+    chown -R appuser:appgroup /app
 
 # Switch to non-root user
 USER appuser

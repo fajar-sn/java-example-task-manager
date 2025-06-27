@@ -1,5 +1,5 @@
 services:
-#  PostgreSQL Database
+  # PostgreSQL Database
   postgres:
     image: postgres:15-alpine
     container_name: taskmanager-postgres
@@ -21,7 +21,7 @@ services:
       timeout: 5s
       retries: 5
 
-#    Task Manager Application
+  # Task Manager Application
   taskmanager-app:
     build:
       context: .
@@ -50,7 +50,7 @@ services:
       retries: 3
       start_period: 60s
 
-#  Redis for caching (optional)
+  # Redis for caching (optional)
   redis:
     image: redis:7-alpine
     container_name: taskmanager-redis
@@ -65,8 +65,10 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+#    profiles:
+#      - full
 
-#  Nginx reverse proxy (optional)
+  # Nginx reverse proxy (optional)
   nginx:
     image: nginx:alpine
     container_name: taskmanager-nginx
@@ -80,6 +82,8 @@ services:
       - taskmanager-app
     networks:
       - taskmanager-network
+#    profiles:
+#      - full
 
 volumes:
   postgres_data:
