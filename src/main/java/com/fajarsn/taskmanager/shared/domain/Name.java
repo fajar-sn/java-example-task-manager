@@ -1,5 +1,6 @@
 package com.fajarsn.taskmanager.shared.domain;
 
+import java.text.MessageFormat;
 import java.util.Objects;
 
 /**
@@ -24,15 +25,15 @@ public final class Name implements ValueObject {
 
     private static void validateName(String name, String fieldName) {
         if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException(fieldName + " cannot be null or empty");
+            throw new IllegalArgumentException(MessageFormat.format("{0} cannot be null or empty", fieldName));
         }
 
         if (name.trim().length() < 2) {
-            throw new IllegalArgumentException(fieldName + " must be at least 2 characters long");
+            throw new IllegalArgumentException(MessageFormat.format("{0} must be at least 2 characters long", fieldName));
         }
 
         if (name.trim().length() > 50) {
-            throw new IllegalArgumentException(fieldName + " cannot exceed 50 characters");
+            throw new IllegalArgumentException(MessageFormat.format("{0} cannot exceed 50 characters", fieldName));
         }
     }
 
@@ -50,7 +51,7 @@ public final class Name implements ValueObject {
     }
 
     public String getFullName() {
-        return firstName + " " + lastName;
+        return MessageFormat.format("{0} {1}", firstName, lastName);
     }
 
     @Override
