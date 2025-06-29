@@ -22,7 +22,7 @@ public class DomainException extends RuntimeException {
         this.errorCode = "DOMAIN_ERROR";
     }
 
-    public DomainException(String message, Throwable cause, String errorCode) {
+    public DomainException(String message, String errorCode, Throwable cause) {
         super(message, cause);
         this.errorCode = errorCode;
     }

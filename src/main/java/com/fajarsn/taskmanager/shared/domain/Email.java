@@ -1,5 +1,6 @@
 package com.fajarsn.taskmanager.shared.domain;
 
+import java.text.MessageFormat;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
@@ -26,7 +27,7 @@ public final class Email implements ValueObject {
         String trimmedEmail = email.trim().toLowerCase();
 
         if (!EMAIL_PATTERN.matcher(trimmedEmail).matches()) {
-            throw new IllegalArgumentException("Invalid email format: " + email);
+            throw new IllegalArgumentException(MessageFormat.format("Invalid email format: {0}", email));
         }
 
         return new Email(trimmedEmail);
